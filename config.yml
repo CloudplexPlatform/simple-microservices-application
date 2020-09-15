@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: backend Build and push Docker image
+          command: |
+            cd backend
+            sudo docker build -t cloudplexng/student-backend:${CIRCLE_BUILD_NUM} .
+            sudo docker login -u "$username" -p "$password"
+            sudo docker push cloudplexng/student-backend:${CIRCLE_BUILD_NUM}
+      - run:
+          name: frontend Build and push Docker image
+          command: |
+            cd frontend
+            sudo docker build -t cloudplexng/student-frontend:${CIRCLE_BUILD_NUM} .
+            sudo docker login -u "$username" -p "$password"
+            sudo docker push cloudplexng/student-frontend:${CIRCLE_BUILD_NUM}
