@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="display-3">Students</h1>
+    <div>
+      <a href="#" class="btn btn-primary js-create-user" data-toggle="modal" data-target="#userModal">Create</a>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Password</td>
+          <td colspan=2>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(users.length===0) {%>
+            <div>
+                <tr><b style="color:red">No Rows Created Yet</b></tr>
+            </div>
+        <%} else {%>
+            <% users.map(function(user, index){ %>
+                <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.password %></td>
+                    <td>
+                        <a href="#" class="btn btn-primary js-edit-user" data-toggle="modal" data-id="<%= user._id %>" data-target="#userModal">Edit</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger js-delete-user" data-id="<%= user._id %>">Delete</button>
+                    </td>
+                </tr>
+            <% }) %>
+        <% } %>
+
+      </tbody>
+    </table>
+    <div>
+</div>
+<%- include('modals/user.ejs')%>
+<script src="/javascripts/user.js"></script>

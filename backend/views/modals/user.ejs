@@ -1,0 +1,40 @@
+<!-- Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <input type="hidden" name='id'>
+            <div class="modal-body">
+            <div class="form-group">
+                <label class="font-weight-bolder">Name</label>
+                <input type="text" class="form-control" name="name" placeholder="User Name">
+                <div class="error-message" data-error="name"></div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bolder">Email</label>
+                <input type="text" class="form-control" name="email" placeholder="User Email">
+                <div class="error-message" data-error="email"></div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bolder">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="User Password">
+                <div class="error-message" data-error="password"></div>
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bolder">Confirm Password</label>
+                <input type="password" class="form-control" name="password_confirmation" placeholder="Re-Type Password">
+                <div class="error-message" data-error="password_confirmation"></div>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary js-save-user">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
