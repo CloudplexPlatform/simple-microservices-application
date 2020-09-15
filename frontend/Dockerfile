@@ -1,17 +1,16 @@
 FROM node:10.15.3
 
-# Setting working directory. All the path will be relative to WORKDIR
-WORKDIR /usr/src/app
+# create & set working directory
+RUN mkdir -p /usr/src
+WORKDIR /usr/src
 
-# Installing dependencies
-COPY package*.json ./
+# copy source files
+COPY . /usr/src
+
+# install dependencies
 RUN npm install
 
-# Copying source files
-COPY . .
-
-# Building app
+# start app
 RUN npm run build
-
-# Running the app
-CMD [ "npm", "start" ]
+EXPOSE 8000
+CMD npm run start
