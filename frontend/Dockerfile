@@ -1,17 +1,17 @@
 FROM node:10.15.3
 
-WORKDIR /app
+# Setting working directory. All the path will be relative to WORKDIR
+WORKDIR /usr/src/app
 
 # Installing dependencies
-COPY package.json /app/
+COPY package*.json ./
+RUN npm install
 
 # Copying source files
-COPY . /app
+COPY . .
 
-RUN npm install 
+# Building app
+RUN npm run build
 
-EXPOSE 8000
-
-ENV NODE_MAX_MEM=2048
-
-CMD ["sh","-c","npm run build && npm run start"]
+# Running the app
+CMD [ "npm", "start" ]
