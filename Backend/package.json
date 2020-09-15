@@ -1,5 +1,5 @@
 {
-    "name": "CrudAppBE",
+    "name": "backend",
     "version": "1.0.0",
     "description": "Its for training purposes",
     "main": "index.js",
