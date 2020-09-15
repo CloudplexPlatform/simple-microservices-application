@@ -1,16 +1,17 @@
 FROM node:10.15.3
 
-# create & set working directory
-RUN mkdir -p /usr/src
-WORKDIR /usr/src
+WORKDIR /app
 
-# copy source files
-COPY . /usr/src
+# Installing dependencies
+COPY package.json /app/
 
-# install dependencies
-RUN npm install
+# Copying source files
+COPY . /app
 
-# start app
-RUN npm run build
+RUN npm install 
+
 EXPOSE 8000
-CMD npm run start
+
+ENV NODE_MAX_MEM=2048
+
+CMD ["sh","-c","npm run build && npm run start"]
