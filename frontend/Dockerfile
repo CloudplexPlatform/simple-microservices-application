@@ -12,6 +12,6 @@ RUN npm install
 
 EXPOSE 8000
 
-ENV NODE_MAX_MEM=512
+ENV NODE_MAX_MEM=2048
 
 CMD ["sh","-c","npm run build && npm run start"]
