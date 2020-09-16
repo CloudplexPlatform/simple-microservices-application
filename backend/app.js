@@ -8,8 +8,8 @@ const upload = require('express-fileupload');
 require('dotenv').config()
 
 var app = express();
-// var server = http.createServer(app);
-// const port = 3000;
+var server = http.createServer(app);
+const port = process.env.PORT;
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", `*`); // update to match the domain you will make the request from
@@ -39,8 +39,8 @@ app.use(express.static('public'));
 app.use('/users', usersRouter);
 app.use('/files', fileRouter);
 
-// server.listen(port, () => {
-//     console.log(`Server is up on port ${port}`);
-// });
+server.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
+});
 
 module.exports = app;

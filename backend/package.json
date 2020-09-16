@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "node app.js",
-        "start": "node ./bin/backend"
+        "start": "node app.js"
     },
     "author": "Ameer Hamza",
     "license": "ISC",
