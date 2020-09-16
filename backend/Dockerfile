@@ -6,8 +6,6 @@ COPY . /app
 
 RUN npm install
 
-RUN npm install pm2 -g
-
-CMD pm2-runtime bin/backend
+CMD ["sh","-c","npm run start"]
 
 EXPOSE 3000
