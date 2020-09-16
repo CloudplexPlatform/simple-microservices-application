@@ -5,6 +5,9 @@ COPY package.json /app
 COPY . /app
 
 RUN npm install
-EXPOSE 3000
 
-CMD ["sh","-c","npm run start"]
+RUN npm install pm2 -g
+
+CMD pm2-runtime bin/backend
+
+EXPOSE 3000
