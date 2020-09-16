@@ -36,7 +36,7 @@ const validate = values => {
 
 const submit = (values, dispatch) => {
     if (!values._id) {
-        return axios.post('http://localhost:3000/users',
+        return axios.post(`${process.env.BACKENDURL}/users`,
             {
                 ...values,
             })
@@ -52,7 +52,7 @@ const submit = (values, dispatch) => {
             })
     }
     else {
-        return axios.put('http://localhost:3000/users',
+        return axios.put(`${process.env.BACKENDURL}/users`,
             {
                 ...values,
                 id: values._id

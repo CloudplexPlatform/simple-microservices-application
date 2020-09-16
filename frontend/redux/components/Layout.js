@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Navbar from './Navbar';
+import Navbar from './NavBar';
 import { Provider } from 'react-redux';
 import globalStore from '../store';
 

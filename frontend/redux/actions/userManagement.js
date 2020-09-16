@@ -17,7 +17,7 @@ export const editUser = (userData) => {
 export const deleteUser = (id) => {
     
     return dispatch => {
-        return axios.delete('http://localhost:3000/users', {
+        return axios.delete(`${process.env.BACKENDURL}/users`, {
             params: {
                 id,
             }
