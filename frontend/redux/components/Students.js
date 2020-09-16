@@ -51,7 +51,7 @@ function Students() {
     var users = useSelector((state) => { return state.usersData.users });
 
     React.useEffect(() => {
-        axios.get(`${process.env.BACKENDURL}/users/get-all`).then((res) => {
+        axios.get(`/users/get-all`).then((res) => {
             if (res.status == 200) {
                 dispatch(initUsersState(res.data.data));
             }
