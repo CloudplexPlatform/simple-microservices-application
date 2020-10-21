@@ -120,7 +120,7 @@ function StudentForm(props) {
                         <Button onClick={handleClose} color="primary">
                             Cancel
                     </Button>
-                        <Button type="submit" color="primary"  >
+                        <Button type="submit" color="primary" onClick={handleClose} >
                             Submit
                     </Button>
                     </DialogActions>
