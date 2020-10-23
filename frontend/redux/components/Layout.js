@@ -6,7 +6,7 @@ import globalStore from '../store';
 const Layout = (props) => (
     <Provider store={globalStore}>
         <Head>
-            <title>Training Project</title>
+            <title>Student App</title>
             <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css" />
         </Head>
         <Navbar />
