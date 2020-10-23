@@ -5,7 +5,7 @@ const { showUsers, createUser, updateUser, deleteUser, getUser, getAllUsers } = 
 const { checkValidationErrorsFromRequest } = require('../Utils/requestValidations');
 
 
-router.get('/', showUsers);
+// router.get('/', showUsers);
 
 router.post('/', [userCreateUpdateValidator, checkValidationErrorsFromRequest], createUser);
 
