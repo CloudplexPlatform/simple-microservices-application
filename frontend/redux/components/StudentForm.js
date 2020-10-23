@@ -34,42 +34,6 @@ const validate = values => {
     return errors
 }
 
-const submit = (values, dispatch) => {
-    if (!values._id) {
-        return axios.post(`/users`,
-            {
-                ...values,
-            })
-            .then((res) => {
-                console.log(res);
-                if (!res.data.errors) {
-                    dispatch(addUser(res.data.data));
-                }
-                else {
-                    let errors = res.data.errors.map((error) => ({ [error.param]: error.msg }));
-                    throw new SubmissionError(_.merge(...errors));
-                }
-            })
-    }
-    else {
-        return axios.put(`/users`,
-            {
-                ...values,
-                id: values._id
-            })
-            .then((res) => {
-                if (!res.data.errors) {
-                    dispatch(editUser(res.data.data));
-                }
-                else {
-                    let errors = res.data.errors.map((error) => ({ [error.param]: error.msg }));
-                    throw new SubmissionError(_.merge(...errors));
-                }
-            })
-    }
-}
-
-
 const renderField = ({
     input,
     label,
@@ -94,6 +58,43 @@ function StudentForm(props) {
     const { open, handleClickOpen, handleClose } = props;
     let { handleSubmit } = props;
     let dispatch = useDispatch();
+
+    const submit = (values, dispatch) => {
+        if (!values._id) {
+            return axios.post(`/users`,
+                {
+                    ...values,
+                })
+                .then((res) => {
+                    console.log(res);
+                    if (!res.data.errors) {
+                        handleClose();
+                        dispatch(addUser(res.data.data));
+                    }
+                    else {
+                        let errors = res.data.errors.map((error) => ({ [error.param]: error.msg }));
+                        throw new SubmissionError(_.merge(...errors));
+                    }
+                })
+        }
+        else {
+            return axios.put(`/users`,
+                {
+                    ...values,
+                    id: values._id
+                })
+                .then((res) => {
+                    if (!res.data.errors) {
+                        dispatch(editUser(res.data.data));
+                    }
+                    else {
+                        let errors = res.data.errors.map((error) => ({ [error.param]: error.msg }));
+                        throw new SubmissionError(_.merge(...errors));
+                    }
+                })
+        }
+    }
+
     return (
         <React.Fragment>
             <Button variant="contained" color="primary" onClick={() => {
@@ -120,7 +121,7 @@ function StudentForm(props) {
                         <Button onClick={handleClose} color="primary">
                             Cancel
                     </Button>
-                        <Button type="submit" color="primary" onClick={handleClose} >
+                        <Button type="submit" color="primary">
                             Submit
                     </Button>
                     </DialogActions>
