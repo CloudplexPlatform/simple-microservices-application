@@ -92,7 +92,6 @@ function onError(error) {
  */
 
 function onListening() {
-    const database = require('../db/mongoose/mongoose');
     var addr = server.address();
     var bind = typeof addr === 'string'
         ? 'pipe ' + addr
