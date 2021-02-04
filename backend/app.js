@@ -2,7 +2,6 @@ const express = require('express');
 const http = require('http');
 const expressEjsLayout = require('express-ejs-layouts');
 const path = require('path');
-const usersRouter = require('./routes/user');
 const fileRouter = require('./routes/file');
 const upload = require('express-fileupload');
 require('dotenv').config()
@@ -34,8 +33,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
-app.use('/users', usersRouter);
+app.get('/', (req, res) => {
+    res.send("Hello World");
+});
+
+const dbRoutes = require('./src/routes/dbRoutes');
+const studentRoutes = require('./src/routes/userRoutes');
+
 app.use('/files', fileRouter);
+app.use('/api', dbRoutes);
+app.use('/users', studentRoutes);
 
 server.listen(port, () => {
     console.log(`Server is up on port ${port}`);
